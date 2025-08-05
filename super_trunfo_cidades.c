@@ -1,7 +1,6 @@
 #include <stdio.h>
 
-// Desafio Super Trunfo - Países
-// Tema 2 - Comparação das Cartas
+
 
 int main() {
     //criei varivéis referente a cada uma das informações das cartas.
@@ -413,3 +412,4 @@ int main() {
     printf("\nObrigado pela participação!\n");
     return 0;
 }
+
