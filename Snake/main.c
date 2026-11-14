@@ -65,17 +65,7 @@ void teclado(unsigned char tecla, int mouseX, int mouseY){ // Função para lida
 
     }
 
-    if(!jogo.jogoIniciado){
-
-        jogo.jogoIniciado = 1;
-
-        jogo.cobra.direcaoX = 1.0f;
-        jogo.cobra.direcaoY = 0.0f;
-
-        snprintf(jogo.Texto, sizeof(jogo.Texto), "Jogo da Cobra | Score: %02d | Pressione P para pausar e ESC para sair", jogo.pontuacao);
-        glutSetWindowTitle(jogo.Texto);
-
-    }
+    
 
     if((tecla == 'p' || tecla == 'P')&& jogo.jogoIniciado){  // Verifica se a tecla pressionada é P ou p e se o jogo foi iniciado
         jogo.jogoPausado = !jogo.jogoPausado;
