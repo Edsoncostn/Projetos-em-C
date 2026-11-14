@@ -114,16 +114,20 @@ void iniciarJogo(){
 
     cobra_iniciar(&jogo.cobra); // Inicializa a cobra
 
-    jogo.jogoIniciado = 0;
-    jogo.jogoEncerrado = 0;
-    jogo.jogoPausado = 0;
+    jogo.jogoIniciado = 1; // Indica que o jogo foi iniciado
+
+    jogo.cobra.direcaoX = 1.0f; // Define a direção inicial da cobra para a direita
+    jogo.cobra.direcaoY = 0.0f;
+
+    jogo.jogoEncerrado = 0; // Inicializa a variável jogoEncerrado como 0 (jogo não encerrado)
+    jogo.jogoPausado = 0; // Inicializa a variável jogoPausado como 0 (jogo não pausado)
 
     jogo.pontuacao = 0;
-    jogo.crescer = 0;
-    jogo.direcaoAlterada = 0;
+    jogo.crescer = 0; // Inicializa a variável crescer como 0 (não crescer)
+    jogo.direcaoAlterada = 0; // permite que a direção seja alterada na próxima atualização
 
-    jogo.intervalo = 120;
-    jogo.macasComidas = 0;
+    jogo.intervalo = 120; // Define o intervalo inicial de atualização do jogo em milissegundos
+    jogo.macasComidas = 0; // Inicializa o contador de maçãs comidas como 0
 
 }
 
