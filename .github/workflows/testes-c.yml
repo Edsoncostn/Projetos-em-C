@@ -1,0 +1,17 @@
+name: CI dos projetos em C
+
+on:
+  push:
+    branches:
+      - main
+      - fix/projetos-c-erros-e-duplicatas
+  pull_request:
+
+jobs:
+  compilacao-e-testes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar codigo
+        uses: actions/checkout@v4
+      - name: Compilar e testar projetos
+        run: bash tests/testes.sh
