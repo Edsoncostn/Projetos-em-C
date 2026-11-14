@@ -11,7 +11,7 @@
 
 Jogo jogo;
 
-//  teste para verificar se sincronizou com o github
+
 
 void display() {
 
