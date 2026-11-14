@@ -11,6 +11,8 @@
 
 Jogo jogo;
 
+//  teste para verificar se sincronizou com o github
+
 void display() {
 
     glClear(GL_COLOR_BUFFER_BIT);
