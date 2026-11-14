@@ -4,7 +4,7 @@ Projeto educacional em **C** que cadastra duas cartas de cidades e compara indic
 
 ## O que o programa faz
 
-- Cadastra duas cidades com **estado (A–H)**, código (ex.: \`A01\`), nome, população, área, PIB e pontos turísticos.
+- Cadastra duas cidades com **estado (A–H)**, código (ex.: `A01`), nome, população, área, PIB e pontos turísticos.
 - Aceita nomes de cidades com espaços.
 - Calcula PIB per capita, densidade demográfica e um índice didático chamado **Super Poder**.
 - Permite comparar **dois atributos diferentes** (opções 1–7) ou **todos os sete atributos** (opção 8).
@@ -14,14 +14,14 @@ Projeto educacional em **C** que cadastra duas cartas de cidades e compara indic
 
 ## Compilação
 
-Entre na pasta \`Super-Trunfo-Cidades\`:
+Entre na pasta `Super-Trunfo-Cidades`:
 
-\`\`\`bash
+```bash
 gcc -std=c11 -Wall -Wextra super_trunfo_cidades.c -lm -o super_trunfo
 ./super_trunfo
-\`\`\`
+```
 
-No Windows, utilize \`-o super_trunfo.exe\` e execute \`super_trunfo.exe\`.
+No Windows, utilize `-o super_trunfo.exe` e execute `super_trunfo.exe`.
 
 ## Exemplo de cadastro
 
@@ -35,11 +35,11 @@ No Windows, utilize \`-o super_trunfo.exe\` e execute \`super_trunfo.exe\`.
 | PIB | 2000 | 1000 |
 | Pontos turísticos | 10 | 4 |
 
-Depois do cadastro, escolha \`8\` para comparar todos os atributos. Também é possível escolher \`1\` e depois \`2\` para comparar somente habitantes e área.
+Depois do cadastro, escolha `8` para comparar todos os atributos. Também é possível escolher `1` e depois `2` para comparar somente habitantes e área.
 
 ## Conceitos de programação
 
-\`struct\`, funções, operadores relacionais, \`switch\`, vetores de atributos, entrada com \`fgets\`, conversão numérica com \`strtoul\`/\`strtod\`, validação e tratamento de empates.
+`struct`, funções, operadores relacionais, `switch`, vetores de atributos, entrada com `fgets`, conversão numérica com `strtoul`/`strtod`, validação e tratamento de empates.
 
 ## Limites do exercício
 
