@@ -2,6 +2,7 @@
 #include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 /* Simulacao textual de movimentos, sem tabuleiro ou capturas. */
 
@@ -14,7 +15,7 @@ static int ler_opcao(const char *mensagem, int minimo, int maximo, int *saida) {
         printf("%s", mensagem);
         fflush(stdout);
         if (!fgets(linha, sizeof linha, stdin)) return 0;
-        if (!__builtin_strchr(linha, '\n') && !feof(stdin)) {
+        if (!strchr(linha, '\n') && !feof(stdin)) {
             while ((ch = getchar()) != '\n' && ch != EOF) {}
             puts("Entrada muito longa. Tente novamente.");
             continue;
