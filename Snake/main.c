@@ -65,7 +65,7 @@ void teclado(unsigned char tecla, int mouseX, int mouseY){ // Função para lida
 
     }
 
-    if(tecla == ' ' && !jogo.jogoIniciado){ // Verifica se a tecla pressionada é ESPACO e se o jogo não foi iniciado
+    if(!jogo.jogoIniciado){
 
         jogo.jogoIniciado = 1;
 
@@ -138,7 +138,7 @@ void mouse(int botao, int estado, int mouseX, int mouseY){ // Função para lida
         iniciarJogo(); // Reinicia o jogo
         gerarMaca(); // Gera uma nova posição para a maçã
 
-        snprintf(jogo.Texto, sizeof(jogo.Texto), "Jogo da Cobra | Score: %02d |Pressione ESPACO para continuar e ESC para sair", jogo.pontuacao);
+        snprintf(jogo.Texto, sizeof(jogo.Texto), "Jogo da Cobra | Score: %02d |ESC para sair e P para pausar", jogo.pontuacao);
         glutSetWindowTitle(jogo.Texto);
 
         glutPostRedisplay();
@@ -272,7 +272,7 @@ int main(int argc, char **argv) { // Função principal
 
     glutInitWindowPosition(100, 100); // Define a posição inicial da janela
 
-    glutCreateWindow("Jogo da Cobra | Pressione ESPACO para iniciar");
+    glutCreateWindow("Jogo da Cobra");
 
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // Define a cor de fundo da janela como preto
 
