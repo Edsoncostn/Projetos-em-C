@@ -1,39 +1,51 @@
 # Super Trunfo de Cidades (C)
 
-Projeto de terminal em C para cadastrar **duas cidades** como cartas e comparar características socioeconômicas. É um exercício de entrada e saída, operadores, expressões aritméticas, condições e `switch`.
+Projeto educacional em **C** que cadastra duas cartas de cidades e compara indicadores por meio de um menu. Foi atualizado para validar entradas, evitar divisões por zero e tratar empates corretamente.
 
-## Funcionalidades implementadas
+## O que o programa faz
 
-- Cadastro de duas cartas com estado, código, cidade, população, área, PIB e pontos turísticos.
-- Cálculo de PIB per capita, densidade demográfica, inverso da densidade e um índice composto chamado **Super Poder**.
-- Comparação por habitantes, área, PIB, pontos turísticos, PIB per capita, densidade demográfica (menor ganha) ou Super Poder.
-- Opção de comparar todos os sete atributos, atribuindo um ponto a cada carta por atributo com valor maior (na densidade, menor); empates dão um ponto para ambas.
-- Fluxo de escolha de dois atributos, com restrição a repetir o mesmo atributo.
+- Cadastra duas cidades com **estado (A–H)**, código (ex.: `A01`), nome, população, área, PIB e pontos turísticos.
+- Aceita nomes de cidades com espaços.
+- Calcula PIB per capita, densidade demográfica e um índice didático chamado **Super Poder**.
+- Permite comparar **dois atributos diferentes** (opções 1–7) ou **todos os sete atributos** (opção 8).
+- Concede **1 ponto** à carta vencedora em cada atributo. Nos empates, **ambas recebem 1 ponto**.
+- Na comparação de densidade demográfica, **vence o menor valor**.
+- Informa o placar e a carta vencedora ou o empate geral.
 
-## Como compilar e executar
+## Compilação
 
-Requer GCC ou compilador C compatível:
+Entre na pasta `Super-Trunfo-Cidades`:
 
 ```bash
-gcc -std=c11 -Wall -Wextra super_trunfo_cidades.c -o super_trunfo
+gcc -std=c11 -Wall -Wextra super_trunfo_cidades.c -lm -o super_trunfo
 ./super_trunfo
 ```
 
-No Windows, execute `super_trunfo.exe` após compilar com `-o super_trunfo.exe`.
+No Windows, utilize `-o super_trunfo.exe` e execute `super_trunfo.exe`.
 
-**Entrada:** digite os valores solicitados no terminal. Use nomes de cidade sem espaços na versão atual (a leitura usa `scanf("%s", ...)`). Escolha a opção 8 no primeiro menu para ver a classificação por todos os atributos e encerrar.
+## Exemplo de cadastro
 
-## Conceitos praticados
+| Campo | Carta 1 | Carta 2 |
+| --- | --- | --- |
+| Estado | A | B |
+| Código | A01 | B02 |
+| Cidade | Rio de Janeiro | Sao Paulo |
+| Habitantes | 1000 | 500 |
+| Área (km²) | 10 | 20 |
+| PIB | 2000 | 1000 |
+| Pontos turísticos | 10 | 4 |
 
-Tipos de dados e formatação (`printf`/`scanf`), operadores relacionais, operador ternário, `switch`, cálculo de indicadores e agregação de pontuações.
+Depois do cadastro, escolha `8` para comparar todos os atributos. Também é possível escolher `1` e depois `2` para comparar somente habitantes e área.
 
-## Limitações conhecidas e melhorias recomendadas
+## Conceitos de programação
 
-- **Problema grave na segunda escolha:** o código usa `scanf("%d", opcao2)` sem `&`, causando comportamento indefinido; **não escolha as opções 1–7 esperando um fluxo estável até que isso seja corrigido**.
-- As entradas com `%s` não limitam o tamanho: nomes ou códigos longos podem exceder os vetores (`Codigo1[4]`, `Cidade1[50]`, etc.). Usar limites em `scanf` ou `fgets`.
-- Não há verificação do retorno de `scanf`; população ou área igual a zero geram divisões inválidas.
-- O PIB per capita depende da unidade escolhida para o PIB, e o “Super Poder” soma grandezas de unidades e escalas diferentes: é uma métrica **didática**, não um índice científico.
-- Comparações individuais não tratam explicitamente empates e o fluxo de opção inválida pode deixar `resultado1` sem inicialização.
-- Recomenda-se representar cada cidade por uma `struct`, extrair funções e criar testes para empates, limites e entradas inválidas.
+`struct`, funções, operadores relacionais, `switch`, vetores de atributos, entrada com `fgets`, conversão numérica com `strtoul`/`strtod`, validação e tratamento de empates.
 
-**Status:** exercício acadêmico/protótipo de lógica. O código-fonte foi preservado sem correções nesta revisão documental.
+## Limites do exercício
+
+- O **PIB per capita** usa a mesma unidade informada para o PIB; escolha a unidade de entrada de maneira consistente.
+- O **Super Poder** soma grandezas de unidades e magnitudes diferentes; é um índice **fictício**, criado para o exercício.
+- O exercício compara apenas duas cartas e não mantém um baralho persistente.
+- Não há interface gráfica nem leitura de dados reais de municípios.
+
+**Status:** versão corrigida; inclui tratamento de erro para entradas inválidas e fim inesperado da entrada.
