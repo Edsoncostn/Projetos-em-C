@@ -1,42 +1,54 @@
-# Tabuleiro Naval — Matrizes e ataques especiais em C
+# Tabuleiro Naval — Matrizes e habilidades em C
 
-Simulação de batalha naval no terminal para praticar **matrizes bidimensionais**, vetores de deslocamento, funções e geração de números pseudoaleatórios. Não é um jogo completo de batalha naval com turnos de dois jogadores.
+Simulador didático em terminal com tabuleiro **10 × 10**, dois navios e ataques especiais com formas geométricas. O código foi revisado para identificar cada navio e não apagar o navio que **não** foi atingido.
 
-## Funcionalidades implementadas
+## Funcionalidades
 
-- Cria uma matriz de **10 × 10** preenchida com água (valor 0).
-- Solicita posicionamento de **dois navios de três células**, nas direções horizontal, vertical ou diagonais.
-- Verifica se as células do navio ficariam fora do tabuleiro ou sobre outro navio.
-- Gera **dois ataques aleatórios** com máscaras de **5 × 5** em formato de cone, cruz ou losango (chamado de “octaedro” no código).
-- Mostra o tabuleiro numérico antes e depois das habilidades.
+- Dois navios de **três células**, posicionados pelo usuário.
+- Direções válidas: \`0\` horizontal; \`1\` vertical; \`2\` diagonal ascendente; \`3\` diagonal descendente.
+- Validação de coordenadas, direção, sobreposição e limites do tabuleiro.
+- Dois ataques pseudoaleatórios com máscaras 5 × 5: **cone, cruz ou losango**.
+- Se o ataque atingir uma célula de um navio, **somente aquele navio** é marcado como destruído.
+- Exibição do tabuleiro e legenda após o posicionamento e cada habilidade.
 
-## Compilar e executar
-
-```bash
-gcc -std=c11 -Wall -Wextra tabuleiro_naval.c -o tabuleiro_naval
-./tabuleiro_naval
-```
-
-No Windows, compile com `-o tabuleiro_naval.exe` e execute o arquivo. Informe linha e coluna de 1 a 10 e direção de 0 a 3 para **cada um dos dois navios**. As habilidades são sorteadas automaticamente após o posicionamento.
-
-## Legenda do tabuleiro
+## Legenda
 
 | Valor | Significado |
 | --- | --- |
-| `0` | Água ou célula livre |
-| `3` | Navio |
-| `5` | Área atingida por habilidade, quando não havia navio |
+| 0 | Água |
+| 3 | Navio ainda ativo |
+| 5 | Área de habilidade sobre a água |
+| 7 | Navio destruído |
+
+## Compilação e execução
+
+\`\`\`bash
+gcc -std=c11 -Wall -Wextra tabuleiro_naval.c -o tabuleiro_naval
+./tabuleiro_naval
+\`\`\`
+
+No Windows, compile com \`-o tabuleiro_naval.exe\` e execute o arquivo.
+
+Você deve informar as coordenadas de **1 a 10** e uma direção de **0 a 3** para cada um dos dois navios. O programa rejeita valores inválidos e pede novas coordenadas.
+
+Para reproduzir os mesmos ataques durante testes, passe uma semente:
+
+\`\`\`bash
+./tabuleiro_naval --seed 42
+\`\`\`
+
+Sem \`--seed\`, a semente é baseada no relógio.
 
 ## Conceitos praticados
 
-Laços aninhados, arrays bidimensionais, funções que modificam matrizes, limites de índices, operador ternário, `rand()`, `srand()` e geração algorítmica de máscaras geométricas.
+Matrizes, funções, laços aninhados, limites de índices, controle de colisão, máscaras geométricas, \`rand()\` e validação de entradas com \`fgets\` e \`strtol\`.
 
-## Limitações conhecidas
+## Limitações
 
-- A direção fornecida não é validada explicitamente: um valor diferente de 0 a 3 pode gerar três células no mesmo ponto, tornando a colocação incorreta.
-- `scanf` não tem verificação de sucesso. Entradas não numéricas podem causar comportamento imprevisível ou repetição do prompt.
-- Se qualquer célula de navio for atingida, o programa **apaga todas as células de todos os navios** do tabuleiro; não há identificação individual nem controle de dano por navio.
-- A origem aleatória pode ficar perto da borda e parte da máscara fica fora do tabuleiro, por decisão da lógica atual.
-- Não existe sistema de pontuação, turnos, condição de vitória ou entrada manual de ataques.
+- Trata-se de uma demonstração de **posicionamento e ataques especiais**, não de um jogo de dois jogadores.
+- Não possui turnos, pontuação, escolha manual de alvo ou condição de vitória.
+- O ataque pode ficar parcialmente fora do tabuleiro quando sorteado perto da borda.
+- O acerto destrói **imediatamente todo o navio identificado**, por regra simplificada do exercício.
+- O tabuleiro mostra a localização de todos os navios, inclusive antes dos ataques.
 
-**Status:** demonstração educacional. Código-fonte original mantido sem alterações nesta revisão documental.
+**Status:** versão corrigida, com ataques reprodutíveis via \`--seed\`.
