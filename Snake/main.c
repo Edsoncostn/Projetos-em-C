@@ -176,6 +176,13 @@ void atualizar(int valor) { // Função para atualizar o jogo a cada intervalo d
             
             jogo.crescer = 1; // Indica que a cobra deve crescer no próximo movimento
             jogo.pontuacao += 10; // Incrementa a pontuação em 10 pontos
+            jogo.macasComidas++; // Incrementa o contador de maçãs comidas
+
+            if(jogo.macasComidas % 5 == 0 && jogo.intervalo > 50){ // A cada 5 maçãs comidas, diminui o intervalo de atualização do jogo, tornando-o mais rápido
+                jogo.intervalo -= 10;
+                printf("Intervalo: %d\n", jogo.intervalo);
+            }
+
             gerarMaca(); // Gera uma nova posição para a maçã
             snprintf(jogo.Texto, sizeof(jogo.Texto), "Jogo da Cobra | Score: %02d | Pressione P para pausar e ESC para sair", jogo.pontuacao);
             glutSetWindowTitle(jogo.Texto);
@@ -187,7 +194,7 @@ void atualizar(int valor) { // Função para atualizar o jogo a cada intervalo d
 
     glutPostRedisplay();
 
-    glutTimerFunc(120, atualizar, 0);
+    glutTimerFunc(jogo.intervalo, atualizar, 0);
 }
 
 
