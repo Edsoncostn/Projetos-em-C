@@ -145,10 +145,22 @@ void atualizar(int valor) { // Função para atualizar o jogo a cada intervalo d
         jogo.crescer = 0;
         jogo.direcaoAlterada = 0; // Reseta a variável direcaoAlterada para permitir que a direção seja alterada novamente
 
+        if(jogo.cobra.tamanho >= MAX_SEGMENTOS){ // Verifica se a cobra atingiu o tamanho máximo
+            jogo.jogoEncerrado = 1; // Indica que o jogo foi encerrado devido a atingir o tamanho máximo
+            snprintf(jogo.Texto, sizeof(jogo.Texto), "FIM DE JOGO | Score: %02d | Pressione o botao esquerdo do mouse para reiniciar", jogo.pontuacao);
+            glutSetWindowTitle(jogo.Texto);
+
+            glutPostRedisplay();
+            glutTimerFunc(jogo.intervalo, atualizar, 0); // Chama a função atualizar novamente após o intervalo definido
+            
+            return; // Sai da função para evitar que o jogo continue atualizando
+
+        }
+
         for (int i = 1; i < jogo.cobra.tamanho; i++) { // Verifica se a cabeça da cobra colidiu com algum segmento do corpo
             if (jogo.cobra.x[0] == jogo.cobra.x[i] && jogo.cobra.y[0] == jogo.cobra.y[i]) {
                 jogo.jogoEncerrado = 1;// Indica que o jogo foi encerrado devido a uma colisão com o próprio corpo da cobra
-                snprintf(jogo.Texto, sizeof(jogo.Texto), "Game Over | Score: %02d | Pressione o botao esquerdo do mouse para reiniciar", jogo.pontuacao);
+                snprintf(jogo.Texto, sizeof(jogo.Texto), "FIM DE JOGO | Score: %02d | Pressione o botao esquerdo do mouse para reiniciar", jogo.pontuacao);
                 glutSetWindowTitle(jogo.Texto);
                 break;
             }
@@ -161,7 +173,7 @@ void atualizar(int valor) { // Função para atualizar o jogo a cada intervalo d
             jogo.cobra.y[0] + RAIO > ALTURA) {
 
             jogo.jogoEncerrado = 1; // Indica que o jogo foi encerrado devido a uma colisão com as bordas da tela
-            snprintf(jogo.Texto, sizeof(jogo.Texto), "Game Over | Score: %02d | Pressione o botao esquerdo do mouse para reiniciar", jogo.pontuacao);
+            snprintf(jogo.Texto, sizeof(jogo.Texto), "FIM DE JOGO | Score: %02d | Pressione o botao esquerdo do mouse para reiniciar", jogo.pontuacao);
             glutSetWindowTitle(jogo.Texto);
         }
 
