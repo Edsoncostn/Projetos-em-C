@@ -5,7 +5,7 @@ Simulador didático em terminal com tabuleiro **10 × 10**, dois navios e ataque
 ## Funcionalidades
 
 - Dois navios de **três células**, posicionados pelo usuário.
-- Direções válidas: \`0\` horizontal; \`1\` vertical; \`2\` diagonal ascendente; \`3\` diagonal descendente.
+- Direções válidas: `0` horizontal; `1` vertical; `2` diagonal ascendente; `3` diagonal descendente.
 - Validação de coordenadas, direção, sobreposição e limites do tabuleiro.
 - Dois ataques pseudoaleatórios com máscaras 5 × 5: **cone, cruz ou losango**.
 - Se o ataque atingir uma célula de um navio, **somente aquele navio** é marcado como destruído.
@@ -22,26 +22,26 @@ Simulador didático em terminal com tabuleiro **10 × 10**, dois navios e ataque
 
 ## Compilação e execução
 
-\`\`\`bash
+```bash
 gcc -std=c11 -Wall -Wextra tabuleiro_naval.c -o tabuleiro_naval
 ./tabuleiro_naval
-\`\`\`
+```
 
-No Windows, compile com \`-o tabuleiro_naval.exe\` e execute o arquivo.
+No Windows, compile com `-o tabuleiro_naval.exe` e execute o arquivo.
 
 Você deve informar as coordenadas de **1 a 10** e uma direção de **0 a 3** para cada um dos dois navios. O programa rejeita valores inválidos e pede novas coordenadas.
 
 Para reproduzir os mesmos ataques durante testes, passe uma semente:
 
-\`\`\`bash
+```bash
 ./tabuleiro_naval --seed 42
-\`\`\`
+```
 
-Sem \`--seed\`, a semente é baseada no relógio.
+Sem `--seed`, a semente é baseada no relógio.
 
 ## Conceitos praticados
 
-Matrizes, funções, laços aninhados, limites de índices, controle de colisão, máscaras geométricas, \`rand()\` e validação de entradas com \`fgets\` e \`strtol\`.
+Matrizes, funções, laços aninhados, limites de índices, controle de colisão, máscaras geométricas, `rand()` e validação de entradas com `fgets` e `strtol`.
 
 ## Limitações
 
@@ -51,4 +51,4 @@ Matrizes, funções, laços aninhados, limites de índices, controle de colisão
 - O acerto destrói **imediatamente todo o navio identificado**, por regra simplificada do exercício.
 - O tabuleiro mostra a localização de todos os navios, inclusive antes dos ataques.
 
-**Status:** versão corrigida, com ataques reprodutíveis via \`--seed\`.
+**Status:** versão corrigida, com ataques reprodutíveis via `--seed`.
