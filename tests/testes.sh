@@ -43,7 +43,7 @@ printf '1\n3\n2\n' | "$BUILD/xadrez" > "$BUILD/bispo.txt"
 echo "Testando Xadrez (todas as orientacoes do cavalo)..."
 for direcao in 1 2 3 4 5 6 7 8; do
   printf '4\n%s\n' "$direcao" | "$BUILD/xadrez" > "$BUILD/cavalo.txt"
-  [ "$(grep -c '^O cavalo se moveu ' "$BUILD/cavalo.txt")" -eq 3 ]
+  [ "$(grep -c 'O cavalo se moveu ' "$BUILD/cavalo.txt")" -eq 3 ]
 done
 
 echo "Testando Xadrez (opcoes invalidas)..."
