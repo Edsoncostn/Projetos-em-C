@@ -281,7 +281,7 @@ int main() {
     printf("7 - Super Poder\n");
     printf("8 - Todos os atributos\n");
 
-    scanf("%d" ,opcao2); // o usuário irá escolher qual atributo deseja comparar, e o valor será guardado na variável 'opcao2'.
+    scanf("%d" ,&opcao2); // o usuário irá escolher qual atributo deseja comparar, e o valor será guardado na variável 'opcao2'.
 
     if (opcao2 == opcao1){
 
