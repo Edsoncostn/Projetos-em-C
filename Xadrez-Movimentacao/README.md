@@ -14,25 +14,25 @@ Os passos do cavalo são uma **representação didática de deslocamento**; na p
 
 ## Como compilar e executar
 
-\`\`\`bash
+```bash
 gcc -std=c11 -Wall -Wextra xadrez.c -o xadrez
 ./xadrez
-\`\`\`
+```
 
-No Windows, utilize \`-o xadrez.exe\` e execute o arquivo.
+No Windows, utilize `-o xadrez.exe` e execute o arquivo.
 
 ## Como usar
 
-1. Escolha a peça pelo número \`1\` (bispo), \`2\` (torre), \`3\` (rainha) ou \`4\` (cavalo).
+1. Escolha a peça pelo número `1` (bispo), `2` (torre), `3` (rainha) ou `4` (cavalo).
 2. Para bispo, torre ou rainha, escolha de 1 até o limite de casas exibido e a direção.
 3. Para o cavalo, escolha diretamente uma das **8 orientações possíveis**. O deslocamento em “L” tem três unidades de movimento representadas em texto.
 
 ## Conceitos praticados
 
 - Recursão com condição de parada, para bispo, torre e rainha.
-- Laços \`for\` para representar a movimentação do cavalo.
-- Arrays de strings, seleção por \`if\` e validação de menus.
-- Leitura segura de inteiros com \`fgets\` e \`strtol\`.
+- Laços `for` para representar a movimentação do cavalo.
+- Arrays de strings, seleção por `if` e validação de menus.
+- Leitura segura de inteiros com `fgets` e `strtol`.
 
 ## Limitações
 
