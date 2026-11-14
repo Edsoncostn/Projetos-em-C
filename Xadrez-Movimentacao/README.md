@@ -1,34 +1,43 @@
 # Movimentação de Peças de Xadrez em C
 
-Exercício de programação em C que **imprime movimentos textuais** de peças de xadrez no terminal. Pratica recursão, `switch`, condicionais e laços; **não implementa um tabuleiro nem as regras completas do xadrez**.
+Exercício em C que simula **movimentos textuais** de bispo, torre, rainha e cavalo. Seu foco é praticar funções recursivas, laços, menus e validação de entradas. **Não é um motor de xadrez nem um jogo completo.**
 
-## Funcionalidades implementadas
+## Funcionalidades
 
-- Menu para selecionar **bispo, torre, rainha ou cavalo**.
-- O bispo, a torre e a rainha imprimem um passo por chamada de função recursiva, conforme direção e número de casas selecionados.
-- Limites definidos no código: bispo até cinco casas, torre até cinco e rainha até oito.
-- O cavalo usa laços para imprimir um percurso em “L”, com duas etapas verticais e uma horizontal, dentre quatro direções oferecidas.
+- **Bispo:** imprime de 1 a 5 passos na direção diagonal escolhida (4 possibilidades).
+- **Torre:** imprime de 1 a 5 passos na direção horizontal ou vertical (4 possibilidades).
+- **Rainha:** imprime de 1 a 8 passos em uma das 8 direções.
+- **Cavalo:** imprime uma representação de movimento em “L” para **qualquer uma das 8 orientações** (duas casas em um eixo e uma no outro).
+- Todas as opções numéricas possuem verificação de faixa e rejeitam texto inválido.
+
+Os passos do cavalo são uma **representação didática de deslocamento**; na partida real, o cavalo salta e não percorre fisicamente cada casa intermediária.
 
 ## Como compilar e executar
 
-```bash
+\`\`\`bash
 gcc -std=c11 -Wall -Wextra xadrez.c -o xadrez
 ./xadrez
-```
+\`\`\`
 
-No Windows, use `-o xadrez.exe` e execute o programa. Escolha uma peça no menu, informe o número de casas solicitado e depois a direção que o programa apresenta.
+No Windows, utilize \`-o xadrez.exe\` e execute o arquivo.
+
+## Como usar
+
+1. Escolha a peça pelo número \`1\` (bispo), \`2\` (torre), \`3\` (rainha) ou \`4\` (cavalo).
+2. Para bispo, torre ou rainha, escolha de 1 até o limite de casas exibido e a direção.
+3. Para o cavalo, escolha diretamente uma das **8 orientações possíveis**. O deslocamento em “L” tem três unidades de movimento representadas em texto.
 
 ## Conceitos praticados
 
-Funções recursivas e condição de parada; `switch/case`; `for` aninhado; validação parcial de intervalo; menu e entrada pelo terminal.
+- Recursão com condição de parada, para bispo, torre e rainha.
+- Laços \`for\` para representar a movimentação do cavalo.
+- Arrays de strings, seleção por \`if\` e validação de menus.
+- Leitura segura de inteiros com \`fgets\` e \`strtol\`.
 
-## Limitações conhecidas e melhorias recomendadas
+## Limitações
 
-- **Erro lógico no cavalo:** `else if (i = cavalo_move)` faz **atribuição**, não comparação, e força `i` a 3; deveria avaliar `i == cavalo_move` se essa for a regra pretendida.
-- A condição `if (i < 0 && i <= 2)` aceita valores negativos, em vez de verificar o intervalo positivo pretendido.
-- O movimento do cavalo oferece apenas quatro das oito possibilidades de deslocamento em “L”.
-- As funções recursivas imprimem “direção inválida” várias vezes quando `direcao` está fora das opções, em vez de rejeitá-la antes de iniciar.
-- As funções não rastreiam coordenadas, capturas, peças bloqueadoras ou limites do tabuleiro.
-- Entradas `scanf` não são verificadas e não existe repetição do menu.
+- Não há tabuleiro, coordenadas de origem e destino, colisões, capturas, xeque ou xeque-mate.
+- O limite de casas de bispo/torre/rainha é **uma escolha do exercício**, não uma validação do movimento real a partir de uma posição do tabuleiro.
+- Cada execução simula uma peça e termina; não mantém uma partida.
 
-**Status:** exercício de lógica de programação; código-fonte preservado sem correções nesta revisão documental.
+**Status:** versão corrigida, incluindo as oito orientações do cavalo e remoção das condições defeituosas de comparação/atribuição.
